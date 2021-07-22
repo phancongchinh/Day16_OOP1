@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lớp mô tả Temperature</title>
+</head>
+<body>
+<script>
+    class Temperature {
+        degCel;
+        constructor (degCel){
+            this.degCel = degCel;
+        }
+        toFar() {
+            return (this.degCel * 9/5 + 32).toFixed(2);
+        }
+        toKel() {
+            return (this.degCel + 273.15).toFixed(2);
+        }
+    }
+
+    let temp1 = new Temperature(0);
+    alert(temp1.degCel + " độ C tương đương với " + temp1.toFar() + " độ F");
+    alert(temp1.degCel + " độ C tương đương với " + temp1.toKel() + " độ K");
+
+</script>
+
+</body>
+</html>

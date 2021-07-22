@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập - Xây dựng lớp Hình chữ nhật</title>
+</head>
+<body>
+
+<script>
+    class Rectangle {
+        width;
+        length;
+
+        constructor (width,length) {
+            this.width = width;
+            this.length = length;
+        }
+        getPerimeter () {
+            return (this.width + this.length) * 2;
+        }
+
+        getArea () {
+            return this.width * this.length;
+        }
+
+        drawCanvas () {
+
+        }
+    }
+
+    let rec1 = new Rectangle (1,2);
+    alert("Perimeter: "  + rec1.getPerimeter() + ". Area: "  + rec1.getArea() );
+</script>
+
+</body>
+</html>

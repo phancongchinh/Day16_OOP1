@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập - Xây dựng lớp mô tả điện thoại</title>
+</head>
+<body>
+<script>
+    class Mobile {
+        battery;
+        status;
+        draft;
+        inbox;
+        outbox;
+
+        constructor (battery,status,draft,inbox,outbox) {
+            this.battery = battery;
+            this.status = status;
+            this.draft = draft;
+            this.inbox = inbox;
+            this.outbox = outbox;
+        }
+        isOn() {
+            return !(this.status === "off" || this.battery === 0);
+        }
+        turnOn() {
+            if (this.isOn()) {
+                alert("This phone is already turned on!");
+                this.battery -= 1;
+            } else if (this.battery > 0) {
+                this.status = "on";
+                this.battery -= 1;
+            }
+        }
+        turnOff() {
+            if (this.isOn()) {
+                this.status = "off";
+                this.battery -= 1;
+            }
+        }
+        charge () {
+            this.battery = 100;
+        }
+        compose() {
+            if (this.isOn()){
+                this.draft.push(prompt("Compose new message for... " ));
+                this.battery -= 1;
+            } else {
+                alert("This phone is off!");
+            }
+        }
+        send(tophone) {
+            if (this.isOn()){
+                let sendingItem = this.draft.pop();
+                this.outbox.push(sendingItem);
+                tophone.inbox.push(sendingItem);
+                this.battery -= 1;
+            } else {
+                alert("This phone is off!");
+            }
+        }
+
+        readInbox(){
+            if (this.isOn()){
+                alert(this.inbox + "");
+                this.battery -= 1;
+            } else {
+                alert("This phone is off!");
+            }
+        }
+        readOutbox(){
+            if (this.isOn()){
+                alert(this.outbox + "");
+                this.battery -= 1;
+            } else {
+                alert("This phone is off!");
+            }
+        }
+    }
+
+    nokia = new Mobile (50,"off",[],[],[]);
+    iphone = new Mobile (50,"off",[],[],[]);
+
+    nokia.compose();
+    nokia.send(iphone);
+    console.log(nokia);
+    iphone.readInbox();
+    console.log(iphone);
+
+</script>
+</body>
+</html>
